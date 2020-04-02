@@ -5,8 +5,7 @@ LE_EMAIL='example@gmail.com'
 
 
 function checkcertbot(){
-type certbot
-if [ $? -eq 0 ];
+if [ -z "`pip list certbot-dns-cloudflare |grep certbot-dns-cloudflare`" ];
 then
 pip install certbot-dns-cloudflare
 fi
@@ -38,7 +37,6 @@ cp /etc/letsencrypt/live/$CERT_DOMAIN/chain.pem /usr/local/etc/ipsec.d/cacerts/c
 cp /etc/letsencrypt/live/$CERT_DOMAIN/cert.pem /usr/local/etc/ipsec.d/certs/server.cert.pem
 cp /etc/letsencrypt/live/$CERT_DOMAIN/privkey.pem /usr/local/etc/ipsec.d/private/server.pem
 service ipsec restart
-fi
 }
 
 checkcertbot
