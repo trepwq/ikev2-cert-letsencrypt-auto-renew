@@ -36,7 +36,7 @@ function renewipseccert(){
 cp /etc/letsencrypt/live/$CERT_DOMAIN/chain.pem /usr/local/etc/ipsec.d/cacerts/ca.cert.pem
 cp /etc/letsencrypt/live/$CERT_DOMAIN/cert.pem /usr/local/etc/ipsec.d/certs/server.cert.pem
 cp /etc/letsencrypt/live/$CERT_DOMAIN/privkey.pem /usr/local/etc/ipsec.d/private/server.pem
-service ipsec restart
+systemctl restart ipsec
 }
 
 checkcertbot
